@@ -27,14 +27,14 @@ def test_model_loading():
 
 #On teste le chargement du fichier .parquet
 def test_parquet_loading():
-    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_final.parquet')
+    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_sample.parquet')
     assert os.path.exists(data_path), f"Le fichier .parquet n'a pas été trouvé à {data_path}"
     df = pd.read_parquet(data_path)
     assert not df.empty, "Erreur dans le chargement du fichier .parquet"
 
 #On teste la fonction de prédiction
 def test_predict(client):
-    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_final.parquet')
+    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_sample.parquet')
     df = pd.read_parquet(data_path)
     sk_id_curr = df.iloc[0]['SK_ID_CURR'] #1er SK_ID_CURR du dataset
     
@@ -68,7 +68,7 @@ def test_compute_color(mocked_st):
 @pytest.mark.parametrize('mocked_st', [mocked_session_state], indirect=True)
 def test_format_value(mocked_st):
     assert format_value(1.82) == 1.82, "Erreur dans la fonction format_value"
-    assert format_value(7.00) == 7, "Erreur dans la fonction format_value"
+    assert format_value(7.00) == '7', "Erreur dans la fonction format_value"
 
 #On teste la fonction get_state()
 def test_get_state(mocked_st):	

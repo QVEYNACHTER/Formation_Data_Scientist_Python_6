@@ -25,8 +25,8 @@ def predict():
     data = request.json
     id = data['SK_ID_CURR']
 
-    #On récupère data_final
-    data_path = os.path.join(dir, ".", "data_final.parquet")
+    #On récupère data_sample
+    data_path = os.path.join(dir, ".", "data_sample.parquet")
     df = pd.read_parquet(data_path)
     sample = df[df['SK_ID_CURR'] == id]
 
@@ -44,11 +44,11 @@ def predict():
     shap_values = explainer.shap_values(sample_scaled)
     
     #On retourne les valeurs SHAP ainsi que la probabilité, sous forme d'item ou liste car c'est nécessaire pour jsonify
-    return jsonify({'probability': proba.tolist(),
+    return jsonify({'probability': proba[0],
                     'shap_values': shap_values[0].tolist(),
                     'feature_names': sample.columns.tolist(),
                     'feature_values': sample.values[0].tolist()})
 
-if __name__ == "__main__":
-    port = os.environ.get("PORT", 5000)
-    app.run(debug=False, host="0.0.0.0", port=int(port))
+if __name__ == '__main__':
+    port = os.environ.get('PORT', 5000)
+    app.run(debug=False, host='0.0.0.0', port=int(port))
