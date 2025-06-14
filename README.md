@@ -26,6 +26,6 @@ On passe désormais au déploiement :
 
 Elle n'est plus active, mais il y avait une pipeline de déploiement connectée entre ce repository et Heroku.
 
-On enchaîne avec l'analyse de Data Drift. Celle-ci consiste à détecter les changements dans la distribution des données entre deux ensembles. Dans mon cas, j'ai comparé les données utilisées jusqu'alors avec le jeu de test qui a été mis à l'écart après le premier notebook. J'ai utilisé la librairie evidently dans le notebook Data Drift (dans le Dossier Code), le résultat étant le quatrième livrable Tableau HTML Data Drift Evidently.
+Et enfin, on enchaîne avec l'analyse de Data Drift. Celle-ci consiste à détecter les changements dans la distribution des données entre deux ensembles. Dans mon cas, j'ai comparé les données utilisées jusqu'alors avec le jeu de test qui a été mis à l'écart après le premier notebook. J'ai utilisé la librairie evidently dans le notebook Data Drift (dans le Dossier Code), le résultat étant le quatrième livrable Tableau HTML Data Drift Evidently.
 
 Il s'agit de loin du projet le plus long et le plus complexe sur lequel j'ai travaillé jusqu'à maitenant.
